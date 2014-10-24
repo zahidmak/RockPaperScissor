@@ -1,0 +1,47 @@
+﻿<!--GROUP : 6
+//GROUP MEMBERS: William Wiltshire, Kirsti Tench, Zahidali Maknojia, Krishna Bhandari, Aleksander Mukhin
+//ASSIGNMENT# 6
+//Description: A paper rock scissors game -->
+    <Window x:Class="Assignment6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Assignment6"
+        Title="Rock Paper Scissor" Height="577" Width="910" FontFamily="Verdana" ResizeMode="NoResize">
+    <Window.Resources>
+        <local:ValueToVisibilityConverter x:Key="Converter"></local:ValueToVisibilityConverter>
+    </Window.Resources>
+    <Grid Background="#FFEDF1FD" Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="348"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="348"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="427"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.RowSpan="2"  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24">Wins</Label>
+        <Label Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="top" Style="{StaticResource Score Board}" Content="{Binding Path=HumanWinsCount}" Background="Black"></Label>
+        <Label Grid.Row="0" Grid.RowSpan="2"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24">Ties</Label>
+        <Label Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="top" Style="{StaticResource Score Board}" Content="{Binding Path=TiesCount}" Background="Black"></Label>
+        <Label Grid.Row="0" Grid.RowSpan="2"  Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="24">Wins</Label>
+        <Label Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="top" Style="{StaticResource Score Board}" Content="{Binding Path=ComputerWinsCount}" Background="Black"></Label>
+        <Label Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" ToolTip="This is you." FontWeight="Bold" >Human</Label>
+        <Label Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold">Computer</Label>
+        <Border BorderThickness="5" Grid.Row="1" Grid.Column="2">
+            <Image HorizontalAlignment="Left" Source="{Binding Path=ComputerImageUrl}" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" />
+        </Border>
+        <Border BorderThickness="5"  Grid.Row="1" Grid.Column="0">
+            <Image HorizontalAlignment="Left"  Source="{Binding Path=HumanImageUrl}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" />
+        </Border>
+        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Style="{StaticResource Label Text}" Content="{Binding Path=HumanLabel}" Visibility="{Binding HumanLabel, Converter={StaticResource Converter}}" HorizontalAlignment="Center"></Label>
+        <Label Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Style="{StaticResource Label Text}" Content="{Binding Path=ComputerLabel}" Visibility="{Binding ComputerLabel, Converter={StaticResource Converter}}" HorizontalAlignment="Center"></Label>
+      
+        <Button Content="Restart" Grid.Column="2" Name="Restart" Click="Restart_Click" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Top" Width="97" Height="30" Margin="0,19,10,0"/>
+        <Button Content="Rock" Name="RockButton" Click="RockButton_Click" HorizontalAlignment="Left" Margin="237,19,0,0" Grid.Row="2" VerticalAlignment="Top" Width="101" RenderTransformOrigin="-0.027,0.211" Height="30"/>
+        <Button Content="Paper" Name="PaperButton" Click="PaperButton_Click" HorizontalAlignment="Left" Margin="122,19,0,0" Grid.Row="2" VerticalAlignment="Top" Width="100" Height="30"/>
+        <Button Content="Scissor" Name="ScissorButton" Click="ScissorButton_Click" HorizontalAlignment="Left" Margin="10,19,0,0" Grid.Row="2" VerticalAlignment="Top" Width="100" Height="30"/>
+    </Grid>
+</Window>
